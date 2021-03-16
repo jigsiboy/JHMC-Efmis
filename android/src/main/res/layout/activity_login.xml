@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#004403">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/ic_logo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Login"
+            android:textColor="#ffffff"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="Please sign in to continue."
+            android:textColor="#ffffff"
+            >
+        </TextView>
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:hint="Username"
+            android:background="@drawable/round_textbox"
+            />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:hint="password"
+            android:background="@drawable/round_textbox"
+            />
+        <Button
+            android:id="@+id/login"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="LOGIN"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:background="@drawable/round_textbox"
+            android:layout_width="150dp"
+            android:layout_height="35dp"/>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
