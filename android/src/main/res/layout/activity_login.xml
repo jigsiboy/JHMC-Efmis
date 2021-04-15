@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#004403">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="200dp"
             android:layout_height="200dp"
