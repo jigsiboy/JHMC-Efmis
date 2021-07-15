@@ -4,11 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#004403">
+    android:background="#FFEFEFEF">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:orientation="horizontal"
@@ -22,19 +23,19 @@
                 android:id="@+id/spinner1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:smsp_floatingLabelColor="#1EFF00"
+                app:smsp_floatingLabelColor="#298fca"
                 app:smsp_floatingLabelText="Selected user"
                 app:smsp_enableErrorLabel="false"
                 app:smsp_hintSize="18sp"
                 app:smsp_itemSize="18sp"
                 app:smsp_floatingLabelSize="14sp"
                 app:smsp_hint="Please select user"
-                app:smsp_hintColor="#FFFFFF"
-                app:smsp_itemColor="#FFFFFF"
+                app:smsp_hintColor="#000000"
+                app:smsp_itemColor="#000000"
                 app:smsp_itemListColor="#7C4DFF"
-                app:smsp_itemListHintBackgroundColor="#808080"
-                app:smsp_itemListHintColor="#FFFFFF"
-                android:background="#40FFFFFF"
+                app:smsp_itemListHintBackgroundColor="#298fca"
+                app:smsp_itemListHintColor="#000000"
+                android:background="#D3D3D3"
                 app:smsp_multilineError="false"
                 app:smsp_selectedItemListColor="#FF5252"
                 android:layout_marginLeft="10dp"
@@ -85,7 +86,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/ic_logo" />
+            app:srcCompat="@drawable/ic_jhmc_logo" />
 
         <TextView
             android:id="@+id/mainTitle"
@@ -93,24 +94,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="JHMC Efmis Mobile"
-            android:textColor="#ffffff"
-            android:textSize="20dp" />
+            android:textColor="#000000"
+            android:textSize="25dp" />
 
         <LinearLayout
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#004403"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#004403"
+                android:textColor="#f2f2f2"
                 android:text="@string/version_label" />
 
             <TextView
                 android:id="@+id/appVersion"
-                android:textColor="#004403"
+                android:textColor="#f2f2f2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp" />
@@ -136,7 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#ffffff"
+                        android:textColor="#000000"
                         android:text="@string/survey_label"
                         android:textSize="20dp"/>
 
@@ -144,6 +144,7 @@
                         android:id="@+id/surveySpinner"
                         android:layout_marginLeft="10dp"
                         android:layout_width="400dp"
+                        android:background="#D3D3D3"
                         android:layout_height="?attr/dropdownListPreferredItemHeight"
                         android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
                         android:popupElevation="3dp" />
@@ -152,29 +153,27 @@
 
                 <Button
                     android:layout_gravity="center_horizontal"
+                    android:background="#004403"
                     android:id="@+id/goToDataEntry"
                     android:layout_marginTop="50dp"
                     android:text="@string/go_to_data_entry"
-                    android:textColor="#444444"
-                    android:background="#ffffff"
                     style="@style/button" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/emptySurveyListFrame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/emptySurveyListFrame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#ffffff"
-                    android:text="@string/empty_survey_list"
-                    android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/empty_survey_list"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
-                <!--
+                    <!--
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -184,24 +183,24 @@
                     android:textSize="20dp" />
                 -->
 
-                <Button
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/importDemoSurvey"
-                    android:layout_marginTop="50dp"
-                    android:text="@string/import_demo_survey"
-                    android:textColor="#444444"
-                    android:background="#ffffff"
-                    style="@style/button" />
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/importDemoSurvey"
+                        android:background="#004403"
+                        android:layout_marginTop="50dp"
+                        android:text="@string/import_demo_survey"
+                        style="@style/button" />
 
-                <Button
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/importNewSurvey"
-                    android:layout_marginTop="50dp"
-                    android:text="@string/import_new_survey"
-                    android:textColor="#444444"
-                    android:background="#ffffff"
-                    style="@style/button" />
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/importNewSurvey"
+                        android:background="#004403"
+                        android:layout_marginTop="50dp"
+                        android:text="@string/import_new_survey"
+                        style="@style/button" />
+                </LinearLayout>
             </LinearLayout>
+
         </FrameLayout>
 
     </LinearLayout>

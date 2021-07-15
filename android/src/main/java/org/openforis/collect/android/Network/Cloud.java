@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +37,7 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.ConnectionSpec;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
@@ -52,7 +54,7 @@ public class Cloud {
         public static final int NOT_FOUND = 404;
     }
 
-    public static final String DOMAIN_NAME = "http://34.87.16.183/collect/api";
+    public static final String DOMAIN_NAME = "http://34.87.74.224/collect/api";
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -67,7 +69,7 @@ public class Cloud {
 
 
     public void createRecord(final ResponseListener listener) {
-        String url = DOMAIN_NAME + "/survey/15/data/records";
+        String url = DOMAIN_NAME + "/survey/77/data/records";
 
         String jsonRequest = "{\"rootEntityName\": \"\", " +
                 "\"versionId\": \"\", " +
@@ -118,13 +120,14 @@ public class Cloud {
         String url = DOMAIN_NAME + "/command/record/attribute";
 
         String jsonRequest = "{" +
-                "\"surveyId\" : 10, " +
+                "\"surveyId\" : 77, " +
                 "\"recordId\" : \""+ id +"\", " +
                 "\"recordStep\": \"ENTRY\", " +
                 "\"parentEntityPath\": \"/surveyors\", " +
                 "\"nodeDefId\": "+ nodeDefId +", " +
                 "\"nodePath\": \""+ criteria +"\", " +
                 "\"attributeType\": \""+ attribute +"\", " +
+                "\"valueByField\": "+ value +", " +
                 "\"preferredLanguage\": \"en\"" +
                 "}";
 
@@ -174,7 +177,7 @@ public class Cloud {
                             //x is longitude y is latitude
                             double x = LONGITUDE;
                             double y = LATITUDE;
-                            postRecords(userId, 21, "COORDINATE", "/surveyors/latlng",
+                            postRecords(userId, 21, "COORDINATE", "/surveyors/latlang",
                                     "{ \"y\": "+ y +", \"x\": "+ x +", \"srs\": \"EPSG:4326\" }", 4, context);
                             break;
                         case 4:
@@ -217,6 +220,7 @@ public class Cloud {
     private static OkHttpClient defaultHttpClient(){
         return new OkHttpClient.Builder()
                 .connectTimeout(REQUEST_CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+//                .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS))
                 .build();
     }
 

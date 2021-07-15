@@ -74,6 +74,8 @@ public class MainActivity extends BaseActivity implements ResponseListener {
     private SmartMaterialSpinner mSpinner;
     private ArrayList<String> mFullNameList;
 
+
+
     private void initialize() {
         try {
             ServiceLocator.init(this);
