@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corner_radius"
+    android:minWidth="300dp"
+    android:padding="5dp"
+    android:minHeight="100dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp">
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/dialog_default_message"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/dialog_default_extra_detail"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@android:color/darker_gray" />
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/fullName"
+            android:visibility="visible"
+            android:hint="Full Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="15dp"
+            android:scrollHorizontally="true"
+            android:textColorHint="@color/black_opacity20"
+            android:background="@drawable/edittext_background"
+            android:textSize="14sp"
+            android:textColor="#000000"/>
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/email"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:hint="Email"
+            android:textColorHint="@color/black_opacity20"
+            android:padding="15dp"
+            android:background="@drawable/edittext_background"
+            android:textColor="#000000"
+            android:scrollHorizontally="true"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical">
+
+        <Button
+            android:id="@+id/dialog_default_button_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:background="@drawable/button_dialog"
+            android:textColor="#FF5000" />
+
+        <Button
+            android:id="@+id/dialog_default_button_positive"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_dialog"
+            android:textColor="#FF5000" />
+
+    </LinearLayout>
+
+</LinearLayout>

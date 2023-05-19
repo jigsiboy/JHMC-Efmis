@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEFEFEF">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:layout_weight="5">
+
+
+<!--            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner-->
+<!--                android:id="@+id/spinner1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:smsp_floatingLabelColor="#298fca"-->
+<!--                app:smsp_floatingLabelText="Selected user"-->
+<!--                app:smsp_enableErrorLabel="false"-->
+<!--                app:smsp_hintSize="18sp"-->
+<!--                app:smsp_itemSize="18sp"-->
+<!--                app:smsp_floatingLabelSize="14sp"-->
+<!--                app:smsp_hint="Please select user"-->
+<!--                app:smsp_hintColor="#000000"-->
+<!--                app:smsp_itemColor="#000000"-->
+<!--                app:smsp_itemListColor="#7C4DFF"-->
+<!--                app:smsp_itemListHintBackgroundColor="#298fca"-->
+<!--                app:smsp_itemListHintColor="#000000"-->
+<!--                android:background="#D3D3D3"-->
+<!--                app:smsp_multilineError="false"-->
+<!--                app:smsp_selectedItemListColor="#FF5252"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_weight="4"/>-->
+
+<!--            <com.jaredrummler.materialspinner.MaterialSpinner-->
+<!--                android:id="@+id/materialSpinner"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_weight="4"-->
+<!--                android:layout_height="40dp"/>-->
+
+<!--            <com.skydoves.powerspinner.PowerSpinnerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@android:color/white"-->
+<!--                android:gravity="center"-->
+<!--                android:hint="Please select a user"-->
+<!--                android:padding="10dp"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textColorHint="@android:color/darker_gray"-->
+<!--                android:textSize="14.5sp"-->
+<!--                app:spinner_arrow_gravity="end"-->
+<!--                app:spinner_arrow_padding="8dp"-->
+<!--                app:spinner_divider_color="@color/about_facebook_color"-->
+<!--                app:spinner_divider_show="true"-->
+<!--                app:spinner_divider_size="0.4dp"-->
+<!--                app:spinner_popup_animation="dropdown"-->
+<!--                app:spinner_popup_background="@color/about_twitter_color"-->
+<!--                app:spinner_popup_elevation="14dp"-->
+<!--                android:id="@+id/powerSpinner"/>-->
+
+<!--            <Button-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:id="@+id/addName"-->
+<!--                android:background="@drawable/ic_stat_name" />-->
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/ic_jhmc_logo" />
+
+        <TextView
+            android:id="@+id/mainTitle"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JHMC Efmis Mobile"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#f2f2f2"
+                android:text="@string/version_label" />
+
+            <TextView
+                android:id="@+id/appVersion"
+                android:textColor="#f2f2f2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
+            <LinearLayout
+                android:id="@+id/notEmptySurveyListFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="#000000"
+                        android:text="@string/survey_label"
+                        android:textSize="20dp"/>
+
+                    <Spinner
+                        android:id="@+id/surveySpinner"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="400dp"
+                        android:background="#D3D3D3"
+                        android:layout_height="?attr/dropdownListPreferredItemHeight"
+                        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                        android:popupElevation="3dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_gravity="center_horizontal"
+                    android:background="#004403"
+                    android:id="@+id/goToDataEntry"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/go_to_data_entry"
+                    style="@style/button" />
+
+                <LinearLayout
+                    android:id="@+id/emptySurveyListFrame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/empty_survey_list"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+                    <!--
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="@string/empty_survey_list_detailed_message"
+                    android:textSize="20dp" />
+                -->
+
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/importDemoSurvey"
+                        android:background="#004403"
+                        android:layout_marginTop="50dp"
+                        android:text="@string/import_demo_survey"
+                        style="@style/button" />
+
+                    <Button
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/importNewSurvey"
+                        android:background="#004403"
+                        android:layout_marginTop="50dp"
+                        android:text="@string/import_new_survey"
+                        style="@style/button" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</ScrollView>

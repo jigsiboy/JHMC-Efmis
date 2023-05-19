@@ -1,0 +1,179 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url "http://www.openforis.org/nexus/content/groups/public/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'maven-publish'
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven { url "http://www.openforis.org/nexus/content/groups/public/" }
+    // dirchooser dependencies
+    maven { url 'http://guardian.github.com/maven/repo-releases' }
+}
+
+dependencies {
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    def appcompat_version = "1.2.0"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    // For loading and tinting drawables on older versions of the platform
+    implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.jaredrummler:material-spinner:1.3.1'
+    implementation("com.squareup.okhttp3:okhttp:4.3.1")
+    implementation 'com.github.chivorns:smartmaterialspinner:1.2.1'
+
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile('com.viewpagerindicator:library:2.4.1.1')
+            {
+        exclude group: 'com.google.android'
+    }
+    compile 'com.ipaulpro.afilechooser:afilechooser:0.0.1@aar'
+    // start of dirchooser dependencies
+    compile 'com.gu:option:1.3'
+    compile('net.rdrei.android.dirchooser:library:3.2@aar')
+    // end of dirchooser dependencies
+    compile 'com.inqbarna:tablefixheaders:1.0.0@aar'
+    compile(project(':model')) {
+        exclude group: 'org.springframework'
+        exclude group: 'commons-collections'
+        exclude group: 'commons-beanutils'
+        exclude group: 'commons-jxpath'
+        exclude group: 'xmlpull'
+        exclude group: 'cglib'
+        exclude group: 'org.slf4j'
+        exclude group: 'org.apache.logging.log4j'
+        exclude group: 'log4j'
+        exclude group: 'org.apache.lucene'
+        exclude group: 'org.liquibase'
+    }
+    compile('org.openforis.android:android-jxpath:1.0-Alpha2') {
+        exclude group: 'org.eclipse.jetty.orbit'
+        exclude group: 'org.apache.tomcat'
+    }
+    compile 'org.openforis.android:android-spring:1.0-Alpha2'
+    compile 'org.sqldroid:sqldroid:1.0.3'
+    compile 'org.openforis.android:android-liquibase-core:2.0.6-Alpha2'
+    compile 'org.slf4j:slf4j-android:1.6.1-RC1'
+    compile 'com.googlecode.openbeans:openbeans:1.0'
+    compile 'com.google.android.gms:play-services-vision:20.1.3'
+    compile 'org.apache.logging.log4j:log4j-core:2.3'
+    compile 'com.github.medyo:android-about-page:1.2.5'
+
+    annotationProcessor 'org.apache.logging.log4j:log4j-core:2.3'
+}
+
+// load properties from local.properties file
+def localProps = new Properties()
+File localPropsFile = rootProject.file('local.properties')
+if (localPropsFile.exists()) localProps.load(localPropsFile.newDataInputStream())
+
+int actualVersionCode = currentVersionCode as int
+String actualVersionName = currentVersionName
+
+boolean isRelease = System.properties['release'] == 'true'
+
+if (isRelease) {
+    actualVersionCode = actualVersionCode + 1
+    actualVersionName = System.properties['versionName'] ?: actualVersionName
+
+    def props = new Properties()
+    def propsFile = rootProject.file('gradle.properties')
+    props.load(propsFile.newDataInputStream())
+
+    props.setProperty('currentVersionCode', actualVersionCode as String)
+    props.setProperty('currentVersionName', actualVersionName)
+    props.store(propsFile.newWriter(), null)
+
+    println "**************************************************************************"
+    println "*** Releasing: $actualVersionName with build number $actualVersionCode ***"
+    println "**************************************************************************"
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion '33.0.0'
+    defaultConfig {
+        applicationId 'org.openforis.collect'
+        minSdkVersion 16
+        targetSdkVersion 31
+        versionCode actualVersionCode
+        versionName actualVersionName
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    if (isRelease)
+        signingConfigs {
+            release {
+                storeFile(file(localProps.storeFile))
+                storePassword(localProps.storePassword)
+                keyAlias(localProps.keyAlias)
+                keyPassword(localProps.keyPassword)
+            }
+        }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            if (isRelease) {
+                signingConfig signingConfigs.release
+                applicationVariants.all { variant ->
+                    variant.outputs.all { output ->
+                        def outputFileName = output.outputFileName
+                        if (outputFileName != null && outputFileName.endsWith('.apk')) {
+                            output.outputFileName = 'Collect.apk'
+                        }
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'org.openforis.collect.android'
+            artifactId 'collect-mobile'
+            version actualVersionCode as String
+            artifact file('build/outputs/apk/release/Collect.apk')
+        }
+    }
+    repositories {
+        maven {
+            url "http://www.openforis.org/nexus/content/repositories/releases/"
+            credentials {
+                username localProps.getProperty('nexus.username')
+                password localProps.getProperty('nexus.password')
+            }
+        }
+    }
+}
